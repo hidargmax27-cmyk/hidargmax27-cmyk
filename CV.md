@@ -8,37 +8,38 @@ AI-Assisted Verification | Web3 Security Tooling | Program Analysis | Smart Cont
 
 ## Summary
 
-Security tooling and formal verification researcher building AI-assisted systems for code analysis and smart contract security. Designed and implemented CogniBridge, a 2800+ file production system with six-chain parallel detection architecture (symbolic execution, concolic, multi-agent red team, 4D fuzzing, taint tracking, graph reasoning) and real-time Mempool defense — iterated through 6 major versions with 84 engineering-level solutions. Authored MNS-Verify, a neuro-symbolic verification framework achieving 0.8748 Macro-F1 on a 443-instance benchmark. Currently extending toward smart contract invariant discovery and counterexample-guided audit triage. Interested in Web3 security roles focused on automated analysis, invariant discovery, fuzzing, formal verification, and audit workflow tooling.
+Security tooling and formal verification researcher building AI-assisted systems for code analysis and smart contract security. Built CogniBridge, an open-source research prototype for AI-assisted smart contract analysis combining symbolic execution, fuzzing, taint tracking, graph reasoning, and LLM-based triage — iterated through 6 design versions with 84 documented engineering solutions. Authored MNS-Verify, a neuro-symbolic verification framework achieving 0.8748 Macro-F1 on a 443-instance benchmark. Currently extending toward smart contract invariant discovery and counterexample-guided audit triage. Interested in Web3 security roles focused on automated analysis, invariant discovery, fuzzing, formal verification, and audit workflow tooling.
 
 ## Web3 Security Tooling
 
-### CogniBridge — AI-Driven Smart Contract Deep Audit & Real-Time Defense System
+### CogniBridge — AI-Assisted Smart Contract Analysis Research Prototype
 
-Full-stack production system | 2800+ source files | 6 major versions (v3.0 → v3.6) | 84 engineering solutions  
+Open-source research prototype | 6 design iterations (v3.0 → v3.6) | 84 documented engineering solutions  
 [GitHub](https://github.com/hidargmax27-cmyk/cognibridge) | [Website](https://cognitivebridgeai.com/) | [Technical Whitepaper (v3.6)](https://github.com/hidargmax27-cmyk/cognibridge)
 
-**Architecture & Core Engine:**
-- Designed and implemented six-chain parallel detection architecture: symbolic execution (Z3/CVC5/Boolector solver portfolio), concolic hybrid execution, multi-agent game-theoretic red team, 4D temporal fuzzing, EVM dynamic taint tracking, and FalkorDB knowledge graph reasoning.
-- Built a solver portfolio strategy with XGBoost-predicted skip decisions and safety-critical exemption mechanisms, reducing NP-Hard constraint timeout rates by 70%+ on complex DeFi protocols.
-- Implemented CodeBERT semantic vector pre-filtering combined with System Dependency Graph (SDG) dual-channel search, reducing cross-contract interaction search space by 85%+.
+**Architecture Design & Prototype Implementation:**
+- Built an open-source research prototype for AI-assisted smart contract analysis, combining symbolic execution, fuzzing, taint tracking, graph reasoning, and LLM-based triage.
+- Designed a six-chain parallel detection architecture: symbolic execution (Z3/CVC5/Boolector solver portfolio), concolic hybrid execution, multi-agent game-theoretic red team, 4D temporal fuzzing, EVM dynamic taint tracking, and FalkorDB knowledge graph reasoning.
+- Implemented a solver portfolio strategy with ML-guided constraint prioritization and safety-critical exemption mechanisms for high-value verification paths.
+- Built CodeBERT semantic vector pre-filtering combined with System Dependency Graph (SDG) dual-channel search to reduce cross-contract interaction combinatorial explosion.
 
-**Real-Time Defense (CogniBridge Shield):**
-- Engineered three-layer deep interception: Mempool pre-execution simulation (<100μs/tx), Builder API integration for block-level filtering, and post-block verification with automatic rescue transaction injection.
-- Designed multi-Builder parallel distribution with on-chain circuit breakers and rescue obfuscation engine for sandwich attack and frontrunning prevention.
+**Real-Time Defense Design (CogniBridge Shield):**
+- Designed and prototyped three-layer deep interception: Mempool pre-execution simulation, Builder API integration for block-level filtering, and post-block verification with automatic rescue transaction injection.
+- Proposed multi-Builder parallel distribution with on-chain circuit breakers for sandwich attack and frontrunning mitigation.
 
 **Formal Verification Pipeline:**
-- Implemented property mutation testing as a deterministic safety net for LLM-generated CVL specifications — mutations that survive indicate weak or over-permissive properties, achieving 60%+ mutation kill rate threshold before verification proceeds.
-- Built CVL Actor-Critic reinforcement learning loop: Generator proposes invariants, Critic validates via symbolic execution, feedback refines specification quality iteratively.
+- Implemented property mutation testing as a deterministic safety net for LLM-generated CVL specifications — mutations that survive indicate weak or over-permissive properties.
+- Designed CVL Actor-Critic reinforcement learning loop: Generator proposes invariants, Critic validates via symbolic execution, feedback refines specification quality iteratively.
 
-**Cloud-Edge & Operational:**
-- Designed cloud-edge elastic scheduling with optimistic execution and conflict detection for 8GB-constrained edge nodes, enabling offline audit capability with incremental sync.
-- Implemented TWAP time-window retrospective analysis with volatility anomaly detection and external anchor points for oracle manipulation detection.
-- Built VS Code extension, Docker self-hosted deployment, and CI/CD integration (GitHub Actions / GitLab CI) for automated PR-level audit.
+**Cloud-Edge & Tooling:**
+- Designed cloud-edge elastic scheduling with optimistic execution and conflict detection for resource-constrained edge nodes.
+- Implemented TWAP time-window retrospective analysis with volatility anomaly detection for oracle manipulation detection.
+- Built VS Code extension and Docker self-hosted deployment for local audit workflows.
 
 **Honest Capability Boundaries:**
-- Documented 12 uncertainty marker types distinguishing verified findings from hypotheses; published detection rate matrices with explicit limitations (known patterns >94%, time-dimension attacks 62-82%, novel zero-days ~35%).
+- Documented 12 uncertainty marker types distinguishing verified findings from hypotheses; published detection capability matrices with explicit limitations and known gaps.
 
-**Tech Stack:** Rust core + Tree-sitter AST + FalkorDB + React/tRPC + Foundry + CodeBERT + Z3/CVC5 + Stripe billing + Tauri desktop
+**Tech Stack:** Rust (design), Tree-sitter AST, FalkorDB, React/tRPC, Foundry, CodeBERT, Z3/CVC5, Tauri desktop
 
 ---
 
@@ -73,7 +74,7 @@ Manuscript under submission / under review
 - Authored a research manuscript on neuro-symbolic verification for C++-to-Rust semantic equivalence checking.
 - Designed a verification pipeline using LLM-guided specification extraction, property decomposition, SMACK, Z3, and bounded model checking.
 - Built MultiSpec-Equiv, a benchmark of 443 C++-to-Rust migration instances, including 200 CVE-derived cases with ground-truth semantic labels.
-- Achieved 0.8748 Macro-F1 against LLM-agent, symbolic execution, and static-analysis baselines — outperforming GPT-4 direct verification (0.71) and pure symbolic approaches (0.63).
+- Achieved 0.8748 Macro-F1 against LLM-agent, symbolic execution, and static-analysis baselines.
 - Developed a property-decomposed verification approach that decomposes semantic equivalence into independently checkable assertions, enabling parallel verification and granular failure localization.
 - Currently extending the approach toward smart contract invariant discovery and counterexample-guided audit triage.
 
@@ -116,9 +117,9 @@ Code / demo coming soon
 
 **Web3 Security:** Foundry, Slither, Semgrep, Echidna, EVM internals, DeFi protocol analysis, flash loan / MEV / oracle manipulation patterns, proxy upgrade safety, invariant testing, PoC reproduction
 
-**AI/ML for Security:** LLM agents (OpenAI/Anthropic/DeepSeek), CodeBERT embeddings, RAG pipelines, tool calling, structured outputs, reinforcement learning for specification synthesis, XGBoost for constraint prioritization
+**AI/ML for Security:** LLM agents (OpenAI/Anthropic/DeepSeek), CodeBERT embeddings, RAG pipelines, tool calling, structured outputs, reinforcement learning for specification synthesis
 
-**Systems & Infrastructure:** Rust, Tree-sitter, FalkorDB (graph DB), Docker, GitHub Actions, CI/CD pipelines, tRPC/React full-stack, Tauri desktop, Stripe integration, cloud-edge architecture
+**Systems & Infrastructure:** Tree-sitter, FalkorDB (graph DB), Docker, GitHub Actions, CI/CD pipelines, tRPC/React full-stack, Tauri desktop, cloud-edge architecture design
 
 ---
 
